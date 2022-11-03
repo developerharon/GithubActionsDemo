@@ -57,7 +57,7 @@ jobs:
         with:
           tag: $VERSION
           name: Release $VERSION
-          body: $VERSION
+          body: 'Release notes go here'
 
   publish:
     runs-on: ubuntu-latest
