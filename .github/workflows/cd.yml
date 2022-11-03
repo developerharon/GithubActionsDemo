@@ -38,10 +38,9 @@ jobs:
       - name: Create a GitHub release
         uses: ncipollo/release-action@v1
         with:
-          allowUpdates: true
-          tag: ${{ github.ref.tag }}
-          name: Release ${{ github.ref.tag }}
-          body: ${{ github.ref.tag }}
+          tag: ${{ github.ref }}
+          name: Release ${{ github.ref }}
+          body: ${{ github.ref }}
   
   build-release:
     needs: create-release
@@ -56,7 +55,7 @@ jobs:
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
       - name: Create Nuget Package
-        run: dotnet build -c Release && dotnet pack -c Release -p:PackageVersion=${{ matrix.dotnet-version }}.${{ github.ref }} -o .
+        run: dotnet build -c Release GithubActionsDemo/GithubActionsDemo.csproj && dotnet pack -c Release -p:PackageVersion=${{ matrix.dotnet-version }}.${{ github.ref }} -o . GithubActionsDemo/GithubActionsDemo.csproj
       - name: Upload Package for Publishing
         uses: actions/upload-artifact@v3
         with:
