@@ -55,7 +55,7 @@ jobs:
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
       - name: Build Project
-        run: dotnet build ./GithubActionsDemo.csproj --configuration Release --no-restore
+        run: dotnet build . --configuration Release --no-restore
       - name: Create Nuget Package
         run: dotnet pack ./GithubActionsDemo/GithubActionsDemo.csproj -configuration Release -p:PackageVersion=${{ matrix.dotnet-version }}.${{ github.ref }} --output .
       - name: Upload Package for Publishing
