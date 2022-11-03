@@ -58,4 +58,4 @@ jobs:
         name: artifacts
         path: ./artifacts
     - name: Publish packages
-      run: dotnet nuget push ./artifacts/**.nupkg --api-key ${{secrets.TOKEN}} --source "https://nuget.pkg.github.com/developerharon/index.json"
+      run: dotnet nuget push *.nupkg --api-key ${{secrets.GITHUB_TOKEN}} --source "https://nuget.pkg.github.com/developerharon/index.json"
