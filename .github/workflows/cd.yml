@@ -54,8 +54,10 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
+      - name: Build Project
+        run: dotnet build --configuration Release --no-restore
       - name: Create Nuget Package
-        run: dotnet build -c Release GithubActionsDemo/GithubActionsDemo.csproj && dotnet pack -c Release -p:PackageVersion=${{ matrix.dotnet-version }}.${{ github.ref }} -o . GithubActionsDemo/GithubActionsDemo.csproj
+        run: dotnet pack -configuration Release -p:PackageVersion=${{ matrix.dotnet-version }}.${{ github.ref }} --output .
       - name: Upload Package for Publishing
         uses: actions/upload-artifact@v3
         with:
