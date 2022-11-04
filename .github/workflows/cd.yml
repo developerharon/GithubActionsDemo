@@ -55,9 +55,9 @@ jobs:
       - name: Create a GitHub release
         uses: ncipollo/release-action@v1
         with:
-          tag: $VERSION
-          name: Release $VERSION
-          body: 'Release notes go here'
+          tag: ${{ env.VERSION }}
+          name: Release ${{ env.VERSION }}
+          body: ${{ env.VERSION }}
 
   publish:
     runs-on: ubuntu-latest
