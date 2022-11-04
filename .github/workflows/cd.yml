@@ -15,9 +15,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     - name: Setup .NET SDK ${{ matrix.dotnet-version }}
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: ${{ matrix.dotnet-version }}
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: ${{ matrix.dotnet-version }}
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
@@ -36,9 +36,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     - name: Setup .NET SDK ${{ matrix.dotnet-version }}
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: ${{ matrix.dotnet-version }}
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: ${{ matrix.dotnet-version }}
     - name: Determine version
       run: echo "VERSION=$(git describe --tags --dirty)" >> $GITHUB_ENV
     - name: Pack
