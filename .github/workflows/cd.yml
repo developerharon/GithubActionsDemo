@@ -28,9 +28,6 @@ jobs:
   pack:
     needs: build
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        dotnet-version: ['3.0', '3.1.x', '5.0.x', '6.0.x' ]
     if: github.event_name == 'push'
     steps:
     - name: Checkout
@@ -38,7 +35,7 @@ jobs:
     - name: Setup .NET SDK ${{ matrix.dotnet-version }}
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: ${{ matrix.dotnet-version }}
+        dotnet-version: '6.0.x'
     - name: Determine version
       run: echo "VERSION=$(git describe --tags --dirty)" >> $GITHUB_ENV
     - name: Pack
